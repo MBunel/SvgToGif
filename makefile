@@ -12,10 +12,10 @@ GFLAGS := -delay 20 -loop 0
 all: $(EXEC)
 
 %.png: %.svg
-	$(SVGC) $(SFLAGS) -z $< -e $@
+	$(SVGC) -z $< -e $@ $(SFLAGS)
 
 animation: $(PNG_FILES)
-	$(GIFC) $(GFLAGS) $(PNG_FILES) $@.gif
+	$(GIFC) $(PNG_FILES) $@.gif $(GFLAGS)
 
 clean:
 	rm -f *.png
