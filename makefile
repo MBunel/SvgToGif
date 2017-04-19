@@ -1,4 +1,4 @@
-EXEC := Map
+EXEC := animation
 
 SVG_FILES := $(wildcard *.svg)
 PNG_FILES := $(SVG_FILES:.svg=.png)
@@ -14,7 +14,7 @@ all: $(EXEC)
 %.png: %.svg
 	$(SVGC) $(SFLAGS) -z $< -e $@
 
-Map: $(PNG_FILES)
+animation: $(PNG_FILES)
 	$(GIFC) $(GFLAGS) $(PNG_FILES) $@.gif
 
 clean:
