@@ -3,13 +3,16 @@ EXEC := Map
 SVG_FILES := $(wildcard *.svg)
 PNG_FILES := $(SVG_FILES:.svg=.png)
 
+SVGC := inkscape
+SFLAGS:=
+
 GIFC := convert
 GFLAGS := -delay 20 -loop 0
 
 all: $(EXEC)
 
 %.png: %.svg
-	inkscape -z $< -e $@
+	$(SVGC) $(SFLAGS) -z $< -e $@
 
 Map: $(PNG_FILES)
 	$(GIFC) $(GFLAGS) $(PNG_FILES) $@.gif
