@@ -2,6 +2,7 @@ EXEC := animation
 
 SVG_FILES := $(wildcard *.svg)
 PNG_FILES := $(SVG_FILES:.svg=.png)
+PNG_FILES_ORDER := $(sort $(PNG_FILES))
 
 SVGC := inkscape
 SFLAGS:=
@@ -12,10 +13,10 @@ GFLAGS := -delay 20 -loop 0
 all: $(EXEC)
 
 %.png: %.svg
-	$(SVGC) -z $< -e $@ $(SFLAGS)
+	$(SVGC) $(SFLAGS) -z $< -e $@
 
 animation: $(PNG_FILES)
-	$(GIFC) $(PNG_FILES) $@.gif $(GFLAGS)
+	$(GIFC) $(GFLAGS) $(PNG_FILES_ORDER) $@.gif
 
 clean:
 	rm -f *.png
