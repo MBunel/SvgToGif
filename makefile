@@ -8,7 +8,7 @@ SVGC := inkscape
 SFLAGS:=
 
 GIFC := convert
-GFLAGS := -delay 20 -loop 0
+GFLAGS := -delay 100 -loop 1 -alpha remove
 
 all: $(EXEC)
 
